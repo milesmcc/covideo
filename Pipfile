@@ -8,7 +8,7 @@ libsass = "*"
 black = "*"
 
 [packages]
-django = ">=3"
+django = ">=2.7"
 django-compressor = ">=2.4"
 django-sass-processor = ">=0.8"
 django-bulma = "*"
