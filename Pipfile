@@ -8,9 +8,9 @@ libsass = "*"
 black = "*"
 
 [packages]
-django = "*"
-django-compressor = "*"
-django-sass-processor = "*"
+django = "==3"
+django-compressor = "==2.4"
+django-sass-processor = "==0.8"
 django-bulma = "*"
 libsass = "*"
 whitenoise = "*"

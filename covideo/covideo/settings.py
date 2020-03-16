@@ -149,6 +149,8 @@ STATICFILES_FINDERS = [
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
+SASS_OUTPUT_STYLE = "compact"
+
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
