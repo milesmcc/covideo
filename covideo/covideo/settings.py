@@ -149,8 +149,6 @@ STATICFILES_FINDERS = [
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-SASS_PROCESSOR_AUTO_INCLUDE = True
-
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
