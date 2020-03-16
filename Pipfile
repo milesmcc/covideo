@@ -5,12 +5,20 @@ verify_ssl = true
 
 [dev-packages]
 libsass = "*"
+black = "*"
 
 [packages]
 django = "*"
 django-compressor = "*"
 django-sass-processor = "*"
 django-bulma = "*"
+libsass = "*"
+whitenoise = "*"
+gunicorn = "*"
+psycopg2 = "*"
 
 [requires]
 python_version = "3.6"
+
+[pipenv]
+allow_prereleases = true
