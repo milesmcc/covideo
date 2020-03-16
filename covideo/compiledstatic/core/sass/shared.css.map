@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "shared.css",
+	"sources": [
+		"shared.sass"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,YAAY,CAAC;EACX,SAAS,EAAE,KAAK,GAAG;;AAErB,MAAM,8BACJ;EAAA,AAAA,kBAAkB,CAAC;IACjB,SAAS,EAAE,eAAe,GAAG,EAAA"
+}

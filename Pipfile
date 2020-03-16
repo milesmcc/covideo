@@ -4,9 +4,13 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+libsass = "*"
 
 [packages]
 django = "*"
+django-compressor = "*"
+django-sass-processor = "*"
+django-bulma = "*"
 
 [requires]
 python_version = "3.6"
