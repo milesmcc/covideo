@@ -8,6 +8,7 @@ COPY Pipfile ./
 RUN pipenv install --system --deploy
 
 COPY covideo .
+
 RUN python manage.py compilescss
 RUN python manage.py collectstatic --noinput
 
