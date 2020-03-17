@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "cd74bb22ea94d95a0b3bd63c7c30a9a67f44be3bee336f8c2e74e71fd72b5f65"
+            "sha256": "db8e4b82ba8cd13baa41b74f8aa68367a8618a21229ce2961b0ff324b1a36f2d"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -32,12 +32,8 @@
             "version": "==1.0.3"
         },
         "django-bulma": {
-            "hashes": [
-                "sha256:229dd7ee977c5f62b94f36dd587ded810d9c7149aedcae41f9f7e9025362b36d",
-                "sha256:4a65f0dde145ec26b0ab4c4e27183b99abe6ccecfce01d1b7324393b01b18bfa"
-            ],
-            "index": "pypi",
-            "version": "==0.6.0"
+            "git": "https://github.com/milesmcc/django-bulma.git",
+            "ref": "adf179ed5e1a4cbf886937e8affc5d62207204b0"
         },
         "django-compressor": {
             "hashes": [

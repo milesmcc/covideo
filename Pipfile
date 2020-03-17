@@ -10,7 +10,7 @@ black = "*"
 django = "==2.2.11"
 django-compressor = "*"
 django-sass-processor = "*"
-django-bulma = "*"
+django-bulma = {git = "https://github.com/milesmcc/django-bulma.git"}
 whitenoise = "*"
 gunicorn = "*"
 psycopg2 = "*"
