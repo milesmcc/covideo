@@ -141,6 +141,8 @@ STATIC_ROOT = "compiledstatic/"
 
 SASS_PROCESSOR_ROOT = STATIC_ROOT
 
+SASS_PROCESSOR_INCLUDE_FILE_PATTERN = r'^.+\.sass$'
+
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",

@@ -4,7 +4,6 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-libsass = "*"
 black = "*"
 
 [packages]
@@ -12,10 +11,10 @@ django = "==2"
 django-compressor = "*"
 django-sass-processor = "*"
 django-bulma = "*"
-libsass = "*"
 whitenoise = "*"
 gunicorn = "*"
 psycopg2 = "*"
+libsass = "*"
 
 [requires]
 python_version = "3.6"
