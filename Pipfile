@@ -7,7 +7,7 @@ verify_ssl = true
 black = "*"
 
 [packages]
-django = "==2"
+django = "==2.2.11"
 django-compressor = "*"
 django-sass-processor = "*"
 django-bulma = "*"
