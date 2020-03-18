@@ -16,6 +16,7 @@ gunicorn = "*"
 psycopg2 = "*"
 libsass = "*"
 celery = "*"
+redis = "*"
 
 [requires]
 python_version = "3.6"
