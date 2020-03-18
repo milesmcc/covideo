@@ -186,3 +186,48 @@ LOGGING = {
         },
     },
 }
+
+if DEBUG:
+    CELERY_TASK_ALWAYS_EAGER = True
+
+CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL")
+CELERY_TASK_SERIALIZER = "pickle"
+CELERY_ACCEPT_CONTENT = ["pickle"]
+CELERY_REDIS_SOCKET_TIMEOUT = 15
+CELERY_FORCE_ROOT = True  # Don't worry, everything is in a container
+
+# General deployment information
+ROOT_PATH = os.getenv("ROOT_PATH", "http://localhost:8000")
+
+if DEBUG:
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+else:
+    EMAIL_HOST = os.environ.get("EMAIL_HOST")
+    EMAIL_PORT = int(os.environ.get("EMAIL_PORT", 465))
+    EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+    EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+    EMAIL_USE_SSL = True
+
+LOGIN_URL = "dashboard:login"
+
+from django.contrib import messages
+
+# Messages
+MESSAGE_TAGS = {
+    messages.INFO: "is-info",
+    messages.ERROR: "is-danger",
+    messages.WARNING: "is-warning",
+    messages.SUCCESS: "is-success",
+}
+
+# Redis cache
+if not DEBUG:
+    CACHES = {
+        "default": {
+            "BACKEND": "redis_cache.RedisCache",
+            "LOCATION": os.getenv("REDIS_CACHE_LOCATION"),
+            "KEY_PREFIX": "v1_",  # Increment when migrations occur
+        }
+    }
+
+INTERNAL_IPS = ["127.0.0.1", "localhost"]

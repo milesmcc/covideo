@@ -144,3 +144,4 @@ compiledstatic
 
 # Random stuff
 .DS_Store
+secrets.yml

@@ -15,6 +15,7 @@ whitenoise = "*"
 gunicorn = "*"
 psycopg2 = "*"
 libsass = "*"
+celery = "*"
 
 [requires]
 python_version = "3.6"

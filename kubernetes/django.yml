@@ -1,0 +1,49 @@
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "covideo-webserver"
+  namespace: "default"
+  labels:
+    app: "covideo-django"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: "covideo-django"
+  template:
+    metadata:
+      labels:
+        app: "covideo-django"
+    spec:
+      containers:
+      - name: "covideo-django"
+        image: "gcr.io/covideo/covideo:62ee4a3347ddc43e54d9bc26c533c931d137afaa"
+        command: ["./webserver.sh"]
+        envFrom:
+        - secretRef:
+            name: django-settings
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "covideo-celeryworker"
+  namespace: "default"
+  labels:
+    app: "covideo-django"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: "covideo-django"
+  template:
+    metadata:
+      labels:
+        app: "covideo-django"
+    spec:
+      containers:
+      - name: "covideo-django"
+        image: "gcr.io/covideo/covideo:62ee4a3347ddc43e54d9bc26c533c931d137afaa"
+        command: ["./celeryworker.sh"]
+        envFrom:
+        - secretRef:
+            name: django-settings
