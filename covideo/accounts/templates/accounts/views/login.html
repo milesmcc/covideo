@@ -3,7 +3,10 @@
 {% load bulma_tags %}
 
 {% block content %}
-<section class="is-narrower has-large-margin-top">
+<div class="is-hidden-touch">
+    <div class="has-large-margin-top"></div>
+</div>
+<section class="is-narrower">
     {% if request.GET.next %}
     <div class="box is-info">
         <h4 class="title is-size-4">Just one thing first...</h4>

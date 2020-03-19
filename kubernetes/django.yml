@@ -15,10 +15,17 @@ spec:
       labels:
         app: "covideo-webserver"
     spec:
+      volumes:
+        - name: google-app-credentials
+          secret:
+            secretName: google-app-credentials
       containers:
       - name: "covideo-webserver"
-        image: "gcr.io/covideo/covideo:a0d53a661d8003ece61870e020b855ea70dfcaa5"
+        image: "gcr.io/covideo/covideo:46d605ba8944d6ba7938d1924a06b7d350fe7394"
         command: ["./webserver.sh"]
+        volumeMounts:
+          - name: google-app-credentials
+            mountPath: /var/secrets/google  
         envFrom:
         - secretRef:
             name: django-settings
@@ -40,10 +47,17 @@ spec:
       labels:
         app: "covideo-celeryworker"
     spec:
+      volumes:
+        - name: google-app-credentials
+          secret:
+            secretName: google-app-credentials
       containers:
       - name: "covideo-celeryworker"
-        image: "gcr.io/covideo/covideo:a0d53a661d8003ece61870e020b855ea70dfcaa5"
+        image: "gcr.io/covideo/covideo:46d605ba8944d6ba7938d1924a06b7d350fe7394"
         command: ["./celeryworker.sh"]
+        volumeMounts:
+          - name: google-app-credentials
+            mountPath: /var/secrets/google  
         envFrom:
         - secretRef:
             name: django-settings
