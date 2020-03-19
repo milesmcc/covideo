@@ -23,7 +23,13 @@
 {% block content %}
 <div class="is-narrower">
     <h3 class="title is-size-3">Submit a Video</h3>
-    <p class="subtitle">We can put instructions here...</p>
+    <div class="content is-size-6">
+        <ul>
+            <li>Try to keep videos around 1 to 2 minutes</li>
+            <li>It's easiest (but not necessary) to record from your phone</li>
+            <li>These videos will be public, so please be mindful.</li>
+        </ul>
+    </div>
     <div class="box">
         <form method="POST" enctype="multipart/form-data" onsubmit="startProgressBar();">
             {% csrf_token %}
@@ -33,5 +39,6 @@
             <button class="button is-primary" type="submit">Submit</button>
         </form>
     </div>
+    <p class="content is-small">By uploading, you grant Covideo (Politiwatch) non-exclusive rights to use and distribute your video; see full terms <a href="https://docs.google.com/document/d/1ZAlGU4IHEhbdAhqQ8hAsKqRnyPQgZXGHf6eMixw8VCw/edit?usp=sharing">here</a>. (Don't worry, we're not evil&mdash;our lawyer friends say this is important!)</p>
 </div>
 {% endblock %}

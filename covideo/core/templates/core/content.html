@@ -1,11 +1,11 @@
 {% extends 'core/base.html' %}
 
 {% block body %}
-<nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
+<nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
     <div class="container">
         <div class="navbar-brand">
             <a class="navbar-item has-text-weight-semibold heading is-size-6 is-marginless has-text-primary" href="/">
-                <i class="fas fa-lg fa-video"></i>
+                <i class="fas fa-bullhorn"></i>
                 &nbsp;
                 Covideo
             </a>
@@ -20,7 +20,10 @@
 
         <div id="navbarContent" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item" href="{% url 'videos:submit' %}">
+                <a class="navbar-item is-tab {% if tab == 'browse' %}is-active{% endif %}" href="{% url 'videos:browse' %}">
+                    Browse
+                </a>
+                <a class="navbar-item is-tab {% if tab == 'submit' %}is-active{% endif %}" href="{% url 'videos:submit' %}">
                     Submit
                 </a>
             </div>
@@ -56,11 +59,11 @@
                     </div>
                     {% else %}
                     <div class="buttons">
-                        <a class="button is-light" href="{% url 'accounts:login' %}">
-                            <strong>Log In</strong>
+                        <a class="button is-light is-transparent" href="{% url 'accounts:login' %}">
+                            Log In
                         </a>
-                        <a class="button is-primary" href="{% url 'accounts:login' %}">
-                            <strong>Sign Up</strong>
+                        <a class="button is-primary is-light" href="{% url 'accounts:login' %}">
+                            Sign Up
                         </a>
                     </div>
                     {% endif %}

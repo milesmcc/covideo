@@ -1,12 +1,21 @@
 {% extends 'core/email.html' %}
 
 {% block content %}
-<p>Thanks for signing up for Covideo.</p>
+<p>Hi there,</p>
 
-<p>To verify your account, please <a href="{{base_url}}{% url 'index' %}?{{ak}}">click here</a>. You'll then be able to
-    upload your first video!</p>
+<p>Thanks for joining Covideo! Together, we’re documenting the shared story of life in the time of COVID-19. We’re excited to have you on board&mdash;despite the circumstances.</p>
 
-<p>You can also copy and paste the following link into your browser: {{base_url}}{% url 'index' %}?{{ak}}</p>
+<p>To confirm your email address, <a href="{{base_url}}{% url 'index' %}?{{ak}}">click here</a>. (If you didn’t sign up, let us know by replying to this email.)</p>
 
-<p>Best,<br>the Covideo people</p>
+<p>How does Covideo work? Every day we’ll send you a prompt&mdash;maybe we’ll ask you to share the most surreal event of the day, your advice for others under lockdown, or easy quarantine recipes. Then, you can record and upload a short video (just a minute or two) in response. If you’re not feeling the prompt, you can always just ignore it.</p>
+
+<p>You’ll also be able to browse videos from others once we publicly launch within the next week or so, at which point videos will be published in real time.</p>
+
+<p>All the best (stay healthy),<br>
+Miles and Isabelle<br>
+(The Covideo people)</p>
+
+<p>P.S.: Send this to a friend who is going a little stir crazy :)  </p>
+
+<p>P.P.S.: You can also copy and paste the following into your browser if the confirmation link above didn't work: {{base_url}}{% url 'index' %}?{{ak}}</p>
 {% endblock %}

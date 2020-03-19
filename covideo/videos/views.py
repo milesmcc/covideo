@@ -26,3 +26,6 @@ class SubmitView(LoginRequiredMixin, CreateView):
 
 class PersonalVideosView(LoginRequiredMixin, TemplateView):
     template_name = "videos/views/personal_videos.html"
+
+class BrowseView(TemplateView):
+    template_name = "videos/views/browse.html"

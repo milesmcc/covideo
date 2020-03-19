@@ -1,0 +1,13 @@
+{% extends 'core/content.html' %}
+
+{% load bulma_tags humanize %}
+
+{% block content %}
+<div class="is-narrower">
+    <div class="box is-primary is-light">
+        <h3 class="title is-size-5">Coming soon...</h3>
+        <p>Covideo hasn't fully launched yet. While you can already <a href="{% url 'videos:submit' %}">upload videos</a>, public browsing has not been
+            enabled. Check back within the next week or so and you'll be able to see what others have been up to!</p>
+    </div>
+</div>
+{% endblock %}
