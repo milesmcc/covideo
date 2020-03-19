@@ -22,29 +22,6 @@ class VideoForm(forms.ModelForm):
         if prompt_queryset.count() == 0:
             self.fields["prompt"].widget = forms.HiddenInput()
 
-    def clean_video(self):
-        video = self.cleaned_data["video"]
-        if video.name.split(".")[-1] not in [
-            "webm",
-            "flv",
-            "avi",
-            "mov",
-            "qt",
-            "wmv",
-            "mp4",
-            "m4p",
-            "m4v",
-            "mpg",
-            "mpeg",
-            "m2v",
-            "svi",
-            "3gp",
-            "3g2",
-            "mxf",
-        ]:
-            raise forms.ValidationError("Please upload a valid video!")
-        return video
-
     def save(self, commit=True):
         obj = super().save(commit=False)
         obj.user = self.user

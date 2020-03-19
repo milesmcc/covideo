@@ -4,7 +4,13 @@
 
 {% block head %}
 <script>
-    function startProgressBar() {
+    var FORCE_SUBMIT = false;
+    function submitForm(e) {
+        if (FORCE_SUBMIT) {
+            return true;
+        }
+        console.log("hi");
+        e.preventDefault();
         document.querySelectorAll(".form-upload-progress").forEach(progress => {
             progress.classList.remove("is-hidden");
             let i = 0;
@@ -16,6 +22,28 @@
                 i++;
             }, 50);
         });
+        document.querySelector("#primary-form-submit").classList.add("is-loading");
+        
+        let form = document.querySelector("#submitForm");
+        fetch(form.action, {
+            method: "post",
+            body: new FormData(form),
+        }).then(resp => {
+            console.log(resp);
+            document.write(resp.body.text());
+        }).catch(() => {
+            FORCE_SUBMIT = true;
+            form.submit();
+        });
+        // xhr.open("POST", form.action); 
+        // xhr.onload = function(event){ 
+        //     console.log("Success, server responded with:");
+        //     console.log(event.target.response);
+        // }; 
+        // var formData = new FormData(form); 
+        // xhr.send(formData);
+
+        return false;
     }
 </script>
 {% endblock %}
@@ -31,12 +59,12 @@
         </ul>
     </div>
     <div class="box">
-        <form method="POST" enctype="multipart/form-data" onsubmit="startProgressBar();">
+        <form method="POST" enctype="multipart/form-data" onsubmit="return submitForm(event)" id="submitForm">
             {% csrf_token %}
             {{form|bulma}}
             <br>
             <progress class="progress is-info form-upload-progress is-hidden" value="0" max="1">Uploading...</progress>
-            <button class="button is-primary" type="submit">Submit</button>
+            <button class="button is-primary" type="submit" id="primary-form-submit">Submit</button>
         </form>
     </div>
     <p class="content is-small">By uploading, you grant Covideo (Politiwatch) non-exclusive rights to use and distribute your video; see full terms <a href="https://docs.google.com/document/d/1ZAlGU4IHEhbdAhqQ8hAsKqRnyPQgZXGHf6eMixw8VCw/edit?usp=sharing">here</a>. (Don't worry, we're not evil&mdash;our lawyer friends say this is important!)</p>
