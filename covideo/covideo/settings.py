@@ -43,10 +43,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.humanize",
     "bulma",
     "sass_processor",
     "core",
     "accounts",
+    "videos",
 ]
 
 MIDDLEWARE = [
@@ -57,6 +59,7 @@ MIDDLEWARE = [
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
+    "accounts.middleware.authkey_middleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
@@ -208,7 +211,7 @@ else:
     EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
     EMAIL_USE_SSL = True
 
-LOGIN_URL = "dashboard:login"
+LOGIN_URL = "accounts:login"
 
 from django.contrib import messages
 
@@ -231,3 +234,7 @@ if not DEBUG:
     }
 
 INTERNAL_IPS = ["127.0.0.1", "localhost"]
+
+if not DEBUG:
+    DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+    GS_BUCKET_NAME = os.getenv("GS_BUCKET_NAME")

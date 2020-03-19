@@ -14,11 +14,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, reverse
 from django.views.generic import RedirectView
+
+class IndexView(RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            return reverse("videos:submit")
+        else:
+            return reverse("accounts:login")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include(("accounts.urls", "accounts"), namespace="accounts")),
-    path("", RedirectView.as_view(url="/accounts/register"), name="index")
+    path(
+        "videos/",
+        include(("videos.urls", "videos"), namespace="videos"),
+    ),
+    path("", IndexView.as_view(), name="index"),
 ]

@@ -1,0 +1,19 @@
+{% extends 'core/content.html' %}
+
+{% load bulma_tags humanize %}
+
+{% block content %}
+<div class="is-narrower">
+    <h3 class="title is-size-3">Your Videos</h3>
+    {% for video in request.user.video_set.all %}
+    <div class="box">
+        <p class="heading">{{video.created|naturalday}}</p>
+        <p class="title is-size-5"><a href="{{video.video.url}}">{{video.title}}</a></p>
+        <p class="subtitle is-size-6">{{video.prompt.text}}</p>
+    </div>
+    {% empty %}
+    <p>You haven't uploaded any videos yet.</p>
+    {% endfor %}
+    <p>Your videos will be made public when we launch in a few days. For now, you can keep track of them here.</p>
+</div>
+{% endblock %}

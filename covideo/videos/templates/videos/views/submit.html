@@ -1,0 +1,37 @@
+{% extends 'core/content.html' %}
+
+{% load bulma_tags humanize %}
+
+{% block head %}
+<script>
+    function startProgressBar() {
+        document.querySelectorAll(".form-upload-progress").forEach(progress => {
+            progress.classList.remove("is-hidden");
+            let i = 0;
+            let interval = 50;
+            let intervalsPerSecond = 1000 / interval;
+            let intervalsPerMinute = intervalsPerSecond * 60;
+            setInterval(() => {
+                progress.setAttribute("value", Math.tanh(i / intervalsPerMinute));
+                i++;
+            }, 50);
+        });
+    }
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="is-narrower">
+    <h3 class="title is-size-3">Submit a Video</h3>
+    <p class="subtitle">We can put instructions here...</p>
+    <div class="box">
+        <form method="POST" enctype="multipart/form-data" onsubmit="startProgressBar();">
+            {% csrf_token %}
+            {{form|bulma}}
+            <br>
+            <progress class="progress is-info form-upload-progress is-hidden" value="0" max="1">Uploading...</progress>
+            <button class="button is-primary" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

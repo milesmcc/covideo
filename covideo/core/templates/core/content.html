@@ -1,0 +1,87 @@
+{% extends 'core/base.html' %}
+
+{% block body %}
+<nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item has-text-weight-semibold heading is-size-6 is-marginless has-text-primary" href="/">
+                <i class="fas fa-lg fa-video"></i>
+                &nbsp;
+                Covideo
+            </a>
+
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarContent">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarContent" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="{% url 'videos:submit' %}">
+                    Submit
+                </a>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    {% if request.user.is_authenticated %}
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                            {% if request.user.display_name %}
+                            Hi, {{request.user.display_name}}
+                            {% else %}
+                            Hi, {{request.user.email}}
+                            {% endif %}
+                        </a>
+                        <div class="navbar-dropdown is-boxed">
+                            <a class="navbar-item" href="{% url 'videos:personal' %}">
+                                My Videos
+                            </a>
+                            <a class="navbar-item" href="{% url 'accounts:logout' %}">
+                                Sign Out
+                            </a>
+                            {% if request.user.is_staff %}
+                            <a class="navbar-item has-text-danger" href="{% url 'admin:index' %}">
+                                Admin Panel
+                            </a>
+                            {% endif %}
+                            <hr class="navbar-divider">
+                            <a class="navbar-item" class="mailto:support@covideo.org">
+                                Report an issue
+                            </a>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="buttons">
+                        <a class="button is-light" href="{% url 'accounts:login' %}">
+                            <strong>Log In</strong>
+                        </a>
+                        <a class="button is-primary" href="{% url 'accounts:login' %}">
+                            <strong>Sign Up</strong>
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<section class="section">
+    <div class="container">
+        {% if messages %}
+        <section class="subsection messages">
+            {% for message in messages %}
+            <div class="box {{message.tags}}">
+                <p>{{message}}</p>
+            </div>
+            {% endfor %}
+        </section>
+        {% endif %}
+        {% block content %}
+        {% endblock %}
+    </div>
+</section>
+{% endblock %}

@@ -1,18 +1,10 @@
 from django import forms
 from core.models import User
 
-class UserForm(forms.ModelForm):
+class AbridgedUserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ["display_name", "email"]
-        widgets = {
-            "display_name": forms.TextInput(),
+        fields = ["email"]
+        help_texts = {
+            "email": "On Covideo, your email is your account. There are no passwords to deal with&mdash;you just give us your email, and we'll send you a special link to log in."
         }
-        labels = {
-            "display_name": "Name"
-        }
-
-    def clean_email(self):
-        if User.objects.filter(email__iexact=self.cleaned_data["email"]).exists():
-            raise forms.ValidationError("That email address is already registered.")
-        return self.cleaned_data["email"]

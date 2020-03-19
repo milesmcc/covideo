@@ -1,8 +1,7 @@
-.is-narrower {
-  max-width: 40rem; }
+.is-narrower { max-width: 40rem; }
 
-@media screen and (max-width: 759px) {
-  .is-smaller-mobile {
-    font-size: 3rem !important; } }
+@media screen and (max-width: 759px) { .is-smaller-mobile { font-size: 3rem !important; } }
+
+.subsection { padding-bottom: 3rem; }
 
 /*# sourceMappingURL=shared.css.map */

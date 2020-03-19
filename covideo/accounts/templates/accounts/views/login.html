@@ -1,0 +1,54 @@
+{% extends 'core/content.html' %}
+
+{% load bulma_tags %}
+
+{% block content %}
+<section class="hero is-medium">
+    <div class="hero-body">
+        <div class="container">
+            <section class="is-narrower">
+                {% if request.GET.next %}
+                <div class="box is-info">
+                    <h4 class="title is-size-4">Just one thing first...</h4>
+                    <p>In order to access that page, you need to have a Covideo account. Sign up or log in using the form below.</p>
+                </div>
+                {% else %}
+                <h1 class="title is-smaller-mobile is-size-1 has-text-primary has-text-weight-bold">Documenting life<br
+                        class="is-hidden-touch"> under
+                    lockdown</h1>
+                <p class="subtitle is-size-4">
+                    Covideo is a crowdsourced collection of short video diaries during COVID-19. Share what’s on your
+                    mind. Let’s record history together.
+                </p>
+                {% endif %}
+                {% if not request.user.is_authenticated and form %}
+                <div class='box'>
+                    <form method="POST" novalidate>
+                        {% csrf_token %}
+                        <div class="columns">
+                            <div class="column">
+                                {{form.email|bulma}}
+                            </div>
+                            <div class="column is-narrow">
+                                <div class="field">
+                                    <label class="label is-hidden-touch">&nbsp;</label>
+                                    <div class="control">
+                                        <button type="submit" class="button is-primary">Let's Go</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                {% else %}
+                <div class="box is-success">
+                    <h3 class="title is-size-4">You're signed up.</h3>
+                    <p>Thanks for joining Covideo. We just sent a message to your email to verify it's yours. Click that
+                        link and you'll be ready to go!</p>
+                </div>
+                {% endif %}
+            </section>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -2,13 +2,13 @@
 
 $turquoise: hsl(185, 100%, 30%)
 
+$link: $turquoise
+
 $family-sans-serif: "Inter", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
 
 body
   background-color: #f8f8fb
   min-height: 100vh
-
-$title-weight: 800
 
 $size-1: 4rem
 $size-2: 3rem
@@ -26,3 +26,22 @@ $size-7: 0.75rem
 @import "components/_all"
 @import "grid/_all"
 @import "layout/_all"
+
+.box
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    $color-invert: nth($pair, 2)
+    &.is-#{$name}
+      background-color: $color
+      color: $color-invert
+      .title, .subtitle
+        color: $color-invert
+      // If light and dark colors are provided
+      @if length($pair) >= 4
+        $color-light: nth($pair, 3)
+        $color-dark: nth($pair, 4)
+        &.is-light
+          background-color: $color-light
+          color: $color-dark
+          .title, .subtitle
+            color: $color-dark

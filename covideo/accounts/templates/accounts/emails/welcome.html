@@ -1,0 +1,12 @@
+{% extends 'core/email.html' %}
+
+{% block content %}
+<p>Thanks for signing up for Covideo.</p>
+
+<p>To verify your account, please <a href="{{base_url}}{% url 'index' %}?{{ak}}">click here</a>. You'll then be able to
+    upload your first video!</p>
+
+<p>You can also copy and paste the following link into your browser: {{base_url}}{% url 'index' %}?{{ak}}</p>
+
+<p>Best,<br>the Covideo people</p>
+{% endblock %}

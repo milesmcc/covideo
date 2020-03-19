@@ -1,0 +1,4 @@
+{% block content %}
+{% endblock %}
+<hr style="background-color: whitesmoke; border: none; display: block; height: 2px; margin: 1.5rem 0;">
+<small>This email was sent to {{to}} by Covideo. To opt out of non-essential email messages, <a href="{{base_url}}{% url 'accounts:email_unsubscribe' %}?{{ak}}">click here</a>.

@@ -1,0 +1,11 @@
+{% extends 'core/email.html' %}
+
+{% block content %}
+<p>Hey there.</p>
+
+<p>Someone&mdash;hopefully you&mdash;just requested to use your email to log in on Covideo. If this was you, <a href="{{base_url}}{% url 'accounts:redirect' %}?{{ak}}&next={{redirect}}">click here</a> and you'll be automatically logged in.</p>
+
+<p>You can also copy and paste the following link into your browser: {{base_url}}{% url 'accounts:redirect' %}?{{ak}}&next={{redirect}}</p>
+
+<p>Best,<br>the Covideo people</p>
+{% endblock %}

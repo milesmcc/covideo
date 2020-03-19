@@ -17,6 +17,8 @@ psycopg2 = "*"
 libsass = "*"
 celery = "*"
 redis = "*"
+html2text = "*"
+django-storages = {extras = ["google"],version = "*"}
 
 [requires]
 python_version = "3.6"

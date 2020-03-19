@@ -4,20 +4,20 @@ metadata:
   name: "covideo-webserver"
   namespace: "default"
   labels:
-    app: "covideo-django"
+    app: "covideo-webserver"
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: "covideo-django"
+      app: "covideo-webserver"
   template:
     metadata:
       labels:
-        app: "covideo-django"
+        app: "covideo-webserver"
     spec:
       containers:
-      - name: "covideo-django"
-        image: "gcr.io/covideo/covideo:eb1cc9276bb1a94e54d27d4db8247deeef423646"
+      - name: "covideo-webserver"
+        image: "gcr.io/covideo/covideo:6a9e825e3307b9d80ecd4696c93a5e911d46ae0a"
         command: ["./webserver.sh"]
         envFrom:
         - secretRef:
@@ -29,20 +29,20 @@ metadata:
   name: "covideo-celeryworker"
   namespace: "default"
   labels:
-    app: "covideo-django"
+    app: "covideo-celeryworker"
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: "covideo-django"
+      app: "covideo-celeryworker"
   template:
     metadata:
       labels:
-        app: "covideo-django"
+        app: "covideo-celeryworker"
     spec:
       containers:
-      - name: "covideo-django"
-        image: "gcr.io/covideo/covideo:eb1cc9276bb1a94e54d27d4db8247deeef423646"
+      - name: "covideo-celeryworker"
+        image: "gcr.io/covideo/covideo:6a9e825e3307b9d80ecd4696c93a5e911d46ae0a"
         command: ["./celeryworker.sh"]
         envFrom:
         - secretRef:
