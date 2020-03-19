@@ -55,6 +55,11 @@ class User(AbstractUser):
             override_opt_out=True,
         )
 
+    def __str__(self):
+        if self.display_name != "":
+            return self.display_name
+        return str(self.pk)
+
 
 class Prompt(models.Model):
     day = models.DateField()

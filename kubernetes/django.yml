@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: "covideo-webserver"
-        image: "gcr.io/covideo/covideo:6a9e825e3307b9d80ecd4696c93a5e911d46ae0a"
+        image: "gcr.io/covideo/covideo:a0d53a661d8003ece61870e020b855ea70dfcaa5"
         command: ["./webserver.sh"]
         envFrom:
         - secretRef:
@@ -42,7 +42,7 @@ spec:
     spec:
       containers:
       - name: "covideo-celeryworker"
-        image: "gcr.io/covideo/covideo:6a9e825e3307b9d80ecd4696c93a5e911d46ae0a"
+        image: "gcr.io/covideo/covideo:a0d53a661d8003ece61870e020b855ea70dfcaa5"
         command: ["./celeryworker.sh"]
         envFrom:
         - secretRef:

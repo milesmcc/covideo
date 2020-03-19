@@ -24,7 +24,7 @@ class VideoForm(forms.ModelForm):
 
     def clean_video(self):
         video = self.cleaned_data["video"]
-        if video.split(".")[-1] not in [
+        if video.name.split(".")[-1] not in [
             "webm",
             "flv",
             "avi",
