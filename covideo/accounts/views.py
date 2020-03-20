@@ -1,6 +1,7 @@
 from django.views.generic import FormView, TemplateView, RedirectView
 from django.shortcuts import reverse, redirect
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from core.models import User, username_generator
 from django.contrib.auth import login, logout
 from . import forms
@@ -35,7 +36,7 @@ class LoginView(FormView):
         return super().dispatch(request, *args, **kwargs)
 
 
-class RegisterCompleteView(TemplateView):
+class RegisterCompleteView(TemplateView, LoginRequiredMixin):
     template_name = "accounts/views/login.html"
 
 
@@ -46,7 +47,7 @@ class LogoutView(RedirectView):
         return reverse("index")
 
 
-class UnsubscribeEmailView(RedirectView):
+class UnsubscribeEmailView(RedirectView, LoginRequiredMixin):
     def get_redirect_url(self, *args, **kwargs):
         self.request.user.email_opt_out = True
         self.request.user.save()
@@ -56,6 +57,6 @@ class UnsubscribeEmailView(RedirectView):
         )
         return reverse("index")
 
-class AuthenticatedRedirectView(RedirectView):
+class AuthenticatedRedirectView(RedirectView, LoginRequiredMixin):
     def get_redirect_url(self, *args, **kwargs):
         return self.request.GET.get("next", "/")
