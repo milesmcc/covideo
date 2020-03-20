@@ -25,7 +25,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "default_secret")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "True") == "True"
 
-ADMINS = [("Error Reporting", "internalerrors@covideo.org")]
+ADMINS = [("Error Reporting", "internalerrors-covideo@sendmiles.email")]
 
 SERVER_EMAIL = "Covideo <noreply@mail.covideo.org>"
 DEFAULT_FROM_EMAIL = SERVER_EMAIL
