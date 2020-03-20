@@ -18,7 +18,7 @@ class VideoForm(forms.ModelForm):
         prompt_queryset = Prompt.objects.filter(day=timezone.now().date())
         self.fields["prompt"].queryset = prompt_queryset
         self.fields["prompt"].empty_label = "Open prompt (anything you want)"
-        self.fields["video"].widget.attrs.update({"accept": "video/*"})
+        self.fields["video"].widget.attrs.update({"accept": "video/mp4,video/x-m4v,video/*"})
         if prompt_queryset.count() == 0:
             self.fields["prompt"].widget = forms.HiddenInput()
 
