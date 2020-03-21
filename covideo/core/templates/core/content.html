@@ -30,7 +30,7 @@
                 <div class="navbar-item">
                     {% if request.user.is_authenticated %}
                     <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link">
+                        <a class="navbar-link has-text-grey">
                             {% if request.user.display_name %}
                             Hi, {{request.user.display_name}}
                             {% else %}

@@ -38,8 +38,8 @@ class BrowseView(ListView):
         filters = {"featured": True, "status": "PUBLISHED"}
         if "day" in self.request.GET:
             filters["day"] = self.request.GET.get("day")
-        if "featured" in self.request.GET:
-            filters["featured"] = self.request.GET.get("featured") == "True"
+        if self.request.GET.get("featured") == "False":
+            del filters["featured"]
         if "search" in self.request.GET:
             filters["title__icontains"] = self.request.GET.get("search")
         if "user" in self.request.GET:

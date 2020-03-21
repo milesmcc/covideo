@@ -21,8 +21,8 @@
                         <div class="control">
                             <div class="select">
                                 <select name="featured">
-                                    <option value="True">Curated feed</option>
-                                    <option value="False" {% if request.GET.featured %}selected="selected" {% endif %}>
+                                    <option value="True">Featured</option>
+                                    <option value="False" {% if request.GET.featured == "False" %}selected="selected" {% endif %}>
                                         All videos
                                     </option>
                                 </select>
