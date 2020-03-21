@@ -10,6 +10,7 @@ def send_email(user, subject, template, context, request=None, override_opt_out=
     if not user.email_opt_out or override_opt_out:
         context["to"] = user.email
         context["base_url"] = settings.ROOT_PATH
+        context["user"] = user
         context["ak"] = f"ak={user.ak_param()}"
         richtext = render_to_string(template, context=context, request=request)
         plaintext = html2text.HTML2Text().handle(richtext)

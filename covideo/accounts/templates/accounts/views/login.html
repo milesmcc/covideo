@@ -8,15 +8,13 @@
 </div>
 <section class="is-narrower">
     {% if request.GET.next %}
-    <div class="box is-info">
-        <h4 class="title is-size-4">Just one thing first...</h4>
-        <p>In order to access that page, you need to have a Covideo account. Sign up or log in using the form below.</p>
-    </div>
+        <h4 class="title is-size-2 has-text-primary">Just one thing first...</h4>
+        <p class="subtitle is-size-5 has-text-grey has-text-weight-semibold">In order to access that page, you need to have a Covideo account. Sign up or log in using the form below.</p>
     {% else %}
     <h1 class="title is-smaller-mobile is-size-1 has-text-primary has-text-weight-bold">Sharing life<br
             class="is-hidden-touch"> under
         lockdown</h1>
-    <p class="subtitle is-size-4 has-text-grey has-text-weight-bold">
+    <p class="subtitle is-size-4 has-text-grey has-text-weight-semibold">
         Covideo is a crowdsourced feed of short video diaries. What's on your mind?
     </p>
     {% endif %}

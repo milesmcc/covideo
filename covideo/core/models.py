@@ -70,6 +70,12 @@ class Prompt(models.Model):
     def __str__(self):
         return self.text
 
+    def send_announcement_email(self):
+        for user in User.objects.filter(verified_email=True):
+            send_email.delay(user, self.text, "core/emails/prompt.html", context={
+                "prompt": self.text,
+            })
+
 
 # VIDEOS
 

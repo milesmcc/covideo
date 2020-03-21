@@ -1,0 +1,19 @@
+{% extends 'core/email.html' %}
+
+{% block content %}
+<p>Hi {{user.display_name|default:"there"}},</p>
+
+<p>We hope you're staying safe and healthy. Thanks for being a part of Covideo.</p>
+
+<p><strong>{{prompt}}</strong> That's today's video prompt&mdash;but you're also welcome to discuss anything else.</p>
+
+<p>To upload your video, please <a href="{{base_url}}{% url 'videos:submit' %}?{{ak}}">click here</a>.</p>
+
+<p>Look out for our next question in your inbox tomorrow!</p>
+
+<p>All the best,<br>
+    Miles and Isabelle, the Covideo people</p>
+
+<p>P.S.: You can also copy and paste the following into your browser if the link above didn't work:
+    {{base_url}}{% url 'videos:submit' %}?{{ak}}</p>
+{% endblock %}

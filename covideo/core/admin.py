@@ -33,10 +33,16 @@ class CoreUserAdmin(UserAdmin):
 
 admin.site.register(User, CoreUserAdmin)
 
+def send_prompt_email(modeladmin, request, queryset):
+    for prompt in queryset:
+        prompt.send_announcement_email()
+send_prompt_email.short_description = "Announce to everyone"
+
 class PromptAdmin(admin.ModelAdmin):
     list_display = ('day', 'text')
     search_fields = ('text',)
     ordering = ('-day',)
+    actions = [send_prompt_email]
 
 admin.site.register(Prompt, PromptAdmin)
 
