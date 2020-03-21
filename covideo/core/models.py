@@ -68,7 +68,7 @@ class Prompt(models.Model):
     text = models.TextField()
 
     def __str__(self):
-        return self.text
+        return f"Daily prompt: {self.text}"
 
     def send_announcement_email(self):
         for user in User.objects.filter(verified_email=True):

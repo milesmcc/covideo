@@ -9,7 +9,7 @@ class VideoForm(forms.ModelForm):
     class Meta:
         model = Video
         fields = ["title", "prompt", "video"]
-        widgets = {"title": forms.TextInput(), "prompt": forms.CheckboxInput()}
+        widgets = {"title": forms.TextInput(), "prompt": forms.RadioSelect()}
         labels = {"title": "Short description"}
 
     field_order = ["prompt", "title", "video", "name"]
@@ -20,6 +20,7 @@ class VideoForm(forms.ModelForm):
         prompt_queryset = Prompt.objects.filter(day=timezone.now().date())
         self.fields["prompt"].queryset = prompt_queryset
         self.fields["prompt"].empty_label = "Open prompt (anything you want)"
+        self.fields["prompt"].initial = prompt_queryset.first()
         self.fields["video"].widget.attrs.update({"accept": "video/mp4,video/x-m4v,video/*"})
 
         if prompt_queryset.count() == 0:
