@@ -8,6 +8,8 @@ $primary: $orange
 
 $family-sans-serif: "Inter", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
 
+$title-weight: 700
+
 body
   background-color: #f8f8fb
   min-height: 100vh
@@ -47,3 +49,12 @@ $size-7: 0.75rem
           color: $color-dark
           .title, .subtitle
             color: $color-dark
+
+
+.navbar-item
+  font-weight: $title-weight
+  font-size: 20px
+  color: $grey
+
+.navbar-item.is-active
+  color: $primary !important

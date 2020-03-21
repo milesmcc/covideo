@@ -58,7 +58,9 @@ class User(AbstractUser):
     def __str__(self):
         if self.display_name != "":
             return self.display_name
-        return str(self.pk)
+        if self.email != "":
+            return str(self.email)
+        return self.username
 
 
 class Prompt(models.Model):
@@ -94,4 +96,5 @@ class Video(models.Model):
     modified = models.DateTimeField(auto_now=True)
     prompt = models.ForeignKey(Prompt, on_delete=models.SET_NULL, null=True, blank=True)
     video = models.FileField(upload_to=video_upload_location, help_text="Try to keep your video concise&mdash;aim for two minutes or less.")
-    duration = models.IntegerField(null=True)
+    duration = models.IntegerField(null=True, blank=True)
+    featured = models.BooleanField(default=False)

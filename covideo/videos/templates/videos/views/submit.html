@@ -15,12 +15,12 @@
 
 {% block content %}
 <div class="is-narrower">
-    <h3 class="title is-size-3">Submit a Video</h3>
-    <div class="content is-size-6">
-        <ul>
+    <h3 class="title is-size-1 is-smaller-mobile has-text-primary">Submit a Video</h3>
+    <div class="content is-size-5 has-text-grey has-text-weight-semibold">
+        <ul style="margin-left: 1.25rem">
             <li>Try to keep videos around 1 to 2 minutes</li>
             <li>It's easiest (but not necessary) to record from your phone</li>
-            <li>These videos will be public, so please be mindful.</li>
+            <li>These videos will be public, so please be mindful</li>
         </ul>
     </div>
     <div class="box">
@@ -28,7 +28,7 @@
             {% csrf_token %}
             {{form|bulma}}
             <br>
-            <button class="button is-primary" type="submit" id="primary-form-submit">Submit</button>
+            <button class="button is-primary" type="submit" id="primary-form-submit">Upload</button>
 
             <br class="form-upload-status is-hidden">
             <br class="form-upload-status is-hidden">

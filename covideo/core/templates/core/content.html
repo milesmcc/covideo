@@ -4,10 +4,8 @@
 <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
     <div class="container">
         <div class="navbar-brand">
-            <a class="navbar-item has-text-weight-semibold heading is-size-6 is-marginless has-text-primary" href="/">
-                <i class="fas fa-bullhorn"></i>
-                &nbsp;
-                Covideo
+            <a class="navbar-item has-text-primary" href="/">
+                <span class="tag is-primary is-large">Covideo</span>
             </a>
 
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
@@ -20,10 +18,10 @@
 
         <div id="navbarContent" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item is-tab {% if tab == 'browse' %}is-active{% endif %}" href="{% url 'videos:browse' %}">
+                <a class="navbar-item {% if tab == 'browse' %}is-active{% endif %}" href="{% url 'videos:browse' %}">
                     Browse
                 </a>
-                <a class="navbar-item is-tab {% if tab == 'submit' %}is-active{% endif %}" href="{% url 'videos:submit' %}">
+                <a class="navbar-item {% if tab == 'submit' %}is-active{% endif %}" href="{% url 'videos:submit' %}">
                     Submit
                 </a>
             </div>
@@ -59,10 +57,10 @@
                     </div>
                     {% else %}
                     <div class="buttons">
-                        <a class="button is-light is-transparent" href="{% url 'accounts:login' %}">
+                        <a class="button is-light is-medium has-text-grey is-transparent" href="{% url 'accounts:login' %}">
                             Log In
                         </a>
-                        <a class="button is-primary is-light" href="{% url 'accounts:login' %}">
+                        <a class="button is-primary is-medium is-light" href="{% url 'accounts:login' %}">
                             Sign Up
                         </a>
                     </div>
@@ -82,6 +80,7 @@
             </div>
             {% endfor %}
         </section>
+        <br><br>
         {% endif %}
         {% block content %}
         {% endblock %}

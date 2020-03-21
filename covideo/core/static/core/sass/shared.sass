@@ -1,15 +1,37 @@
 .is-narrower
   max-width: 40rem
+  margin: auto
+
+.is-narrower-ish
+  max-width: 60rem
+  margin: auto
 
 @media screen and (max-width: 759px)
   .is-smaller-mobile
     font-size: 3rem !important
 
 .subsection
-  padding-bottom: 3rem
+  padding-bottom: 2rem 0
+
+.subsection.is-tall
+  padding: 6rem 0
 
 .has-large-margin-top
   margin-top: 5rem
 
 .is-transparent
   background-color: #00000000 !important
+
+.is-tall
+  padding-bottom: 5rem
+
+title
+  hyphens: auto !important
+
+@media screen and (min-width: 759px)
+  .has-text-right-desktop
+    text-align: right
+
+  .is-sticky-desktop
+    position: sticky
+    top: 2rem

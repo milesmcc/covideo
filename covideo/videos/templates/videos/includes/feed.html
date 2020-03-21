@@ -1,0 +1,38 @@
+{% load humanize daily_prompt %}
+
+{% regroup videos by created.date as videos_by_date %}
+
+{% for date in videos_by_date %}
+<section class="subsection is-tall">
+    <section class="subsection">
+        <div class="columns">
+            <div class="column is-3 has-text-right-desktop">
+                <div class="is-sticky-desktop">
+                    <h1 class="title is-size-3 is-marginless is-smaller-mobile">
+                        {{date.grouper|date:"b j"|capfirst}}</h1>
+                    <h1 class="title is-size-3 is-smaller-mobile has-text-grey">{{date.grouper|date:"l"|capfirst}}
+                    </h1>
+                </div>
+            </div>
+            <div class="column">
+                <h1 class="title is-size-3 has-text-weight-bold has-text-primary">{{date.grouper|prompts}}</h1>
+                <br><br>
+                <div class="columns is-multiline">
+                    {% for video in date.list %}
+                    <div class="column is-6">
+                        {% include 'videos/includes/video.html' %}
+                    </div>
+                    {% empty %}
+                </div>
+                <h3 class="title is-size-4 has-text-weight-bold is-smaller-mobile has-text-grey">There are no videos for
+                    this date.</h3>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</section>
+{% empty %}
+<section class="subsection is-tall has-text-centered">
+    <h3 class="title is-size-3 has-text-grey">There are no videos to display.</h3>
+</section>
+{% endfor %}

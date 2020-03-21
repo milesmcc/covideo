@@ -1,13 +1,55 @@
 {% extends 'core/content.html' %}
 
-{% load bulma_tags humanize %}
+{% load bulma_tags humanize pagination %}
 
 {% block content %}
-<div class="is-narrower">
-    <div class="box is-primary is-light">
-        <h3 class="title is-size-5">Coming soon...</h3>
-        <p>Covideo hasn't fully launched yet. While you can already <a href="{% url 'videos:submit' %}">upload videos</a>, public browsing has not been
-            enabled. Check back within the next week or so and you'll be able to see what others have been up to!</p>
+<section class="subsection {% if expanded %}is-tall{% endif %}">
+    <div class="columns is-centered">
+        <div class="column is-narrow">
+            {% if expanded %}
+            <h1 class="title is-size-1 has-text-primary is-smaller-mobile">Sharing life under lockdown</h1>
+            {% endif %}
+            <form method="GET" class="box">
+                <div class="columns is-vcentered">
+                    <div class="column">
+                        <div class="control">
+                            <input class="input" type="text" name="search" placeholder="Search videos..."
+                                value="{{request.GET.search}}">
+                        </div>
+                    </div>
+                    <div class="column is-narrow">
+                        <div class="control">
+                            <div class="select">
+                                <select name="featured">
+                                    <option value="True">Curated feed</option>
+                                    <option value="False" {% if request.GET.featured %}selected="selected" {% endif %}>
+                                        All videos
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-narrow">
+                        <div class="control">
+                            <input class="input" type="date" value="{{request.GET.date}}">
+                        </div>
+                    </div>
+                    <div class="column is-narrow">
+                        <button class="button is-primary is-light" type="submit">Filter</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
+</section>
+<section class="subsection feed">
+    {% include "videos/includes/feed.html" with videos=object_list %}
+    {% if object_list %}
+    <div class="columns">
+        <div class="column is-offset-3">
+            {% pagination page_obj url_parameters=url_parameters %}
+        </div>
+    </div>
+    {% endif %}
+</section>
 {% endblock %}

@@ -1,0 +1,12 @@
+<div class="video subsection">
+    <video controls preload="metadata" style="border-radius: 6px;" width="500">
+        <source
+            src="https://storage.googleapis.com/covideo-submissions/videos/14/9BJgpuszqAN9_60651398187__AADC6573-03E2-47A2-8DD9-7EBA3CEDF3C7.MOV?Expires=1584907688&GoogleAccessId=covideo-django%40covideo.iam.gserviceaccount.com&Signature=IPqMibJ4KYchQxwRHOhozFx8692PUzmKQHId%2F75fdo3u2pYA%2BJ2%2F4IjW6fJhlRBYtqaVwIuKsfxMpZr6YVCpZtwvr7yVNibLkuHLipDd641onKs7IoHdspeBXM2P9RW5KXIKHcosPQpjFA3LO2qQQY6%2Fsz6yyjfwsx4TMjQTGIgDmbWO35bZX3clmpdIlGgk%2FVrDFSfMHOcU%2B6gxta6mRTdb2gHts7lrMmoz3n%2BBpj%2B%2FUscVoDYkWHefZfKc4VvAnB8hoBna6jtl1KNd6npG%2B72lQ1X%2FZL%2FZbneRcbt8pmoHmEfM%2FFKeasbSv51TKnfuhiEnf7ss8oyzRb1idN0h8Q%3D%3D">
+    </video>
+    <p class="has-text-primary is-size-5 title is-marginless">{{video.user.display_name}}</p>
+    <h4 class="title is-size-4 is-marginless">{{video.title}}</h4>
+    {% if video.status != "PUBLISHED" %}
+    <span class="tag is-info">Not Yet Public</span>
+    {% endif %}
+    <br><br><br>
+</div>

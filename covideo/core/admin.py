@@ -41,8 +41,9 @@ class PromptAdmin(admin.ModelAdmin):
 admin.site.register(Prompt, PromptAdmin)
 
 class VideoAdmin(admin.ModelAdmin):
-    list_display = ("created", "title", "user", "prompt")
+    list_display = ("created", "status", "title", "user", "prompt", "featured")
     search_fields = ('title',)
+    list_filter = ('status', 'featured',)
     ordering = ("-created",)
 
 admin.site.register(Video, VideoAdmin)
