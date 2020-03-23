@@ -1,3 +1,11 @@
+apiVersion: networking.gke.io/v1beta1
+kind: ManagedCertificate
+metadata:
+  name: covideo-certificate
+spec:
+  domains:
+  - covideo.org
+---
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
@@ -21,7 +29,7 @@ spec:
             secretName: google-app-credentials
       containers:
       - name: "covideo-webserver"
-        image: "gcr.io/covideo/covideo:68f025ccae981de5fc4d832a6997298c5a73f2aa"
+        image: "gcr.io/covideo/covideo:ed90bc908f1d04caf78edd43726938086877b4e4"
         command: ["./webserver.sh"]
         volumeMounts:
           - name: google-app-credentials
@@ -53,7 +61,7 @@ spec:
             secretName: google-app-credentials
       containers:
       - name: "covideo-celeryworker"
-        image: "gcr.io/covideo/covideo:68f025ccae981de5fc4d832a6997298c5a73f2aa"
+        image: "gcr.io/covideo/covideo:ed90bc908f1d04caf78edd43726938086877b4e4"
         command: ["./celeryworker.sh"]
         volumeMounts:
           - name: google-app-credentials
