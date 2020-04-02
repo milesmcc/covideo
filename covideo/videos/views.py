@@ -36,21 +36,21 @@ class BrowseView(ListView):
 
     def get_queryset(self):
         filters = {"featured": True, "status": "PUBLISHED"}
-        if "day" in self.request.GET:
-            filters["day"] = self.request.GET.get("day")
+        if self.request.GET.get("day", "None") != "None":
+            filters["created__date"] = self.request.GET.get("day")
         if self.request.GET.get("featured") == "False":
             del filters["featured"]
-        if "search" in self.request.GET:
+        if self.request.GET.get("search", "None") != "None":
             filters["title__icontains"] = self.request.GET.get("search")
-        if "user" in self.request.GET:
+        if self.request.GET.get("user", "None") != "None":
             filters["user__username"] = self.request.GET.get("user")
         return Video.objects.filter(**filters).order_by("-created")
 
     def get_context_data(self, *args, object_list=None, **kwargs):
         data = super().get_context_data(*args, object_list=object_list, **kwargs)
-        data["url_parameters"] = (
-            f'&day=self.request.GET.get("day")&featured={self.request.GET.get("featured")}'
-            + f'&search={self.request.GET.get("search")}&user={self.request.GET.get("user")}'
-        )
+        data["url_parameters"] = ""
+        for i in ["day", "featured", "search", "user"]:
+            if self.request.GET.get(i, "None") != "None":
+                data["url_parameters"] += f'&{i}={self.request.GET.get(i)}'
         data["expanded"] = len(self.request.GET.keys()) == 0
         return data
