@@ -41,7 +41,8 @@
     {% include "videos/includes/feed.html" with videos=object_list %}
     {% if object_list %}
     <div class="columns">
-        <div class="column is-offset-3">
+        <div class="column is-one-fifth"></div>
+        <div class="column">
             {% pagination page_obj url_parameters=url_parameters %}
         </div>
     </div>
