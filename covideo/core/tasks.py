@@ -59,7 +59,8 @@ def process_video(video_pk):
     video.thumbnail.save("{temp_id}_thumbnail.png", File(open(output_thumbnail_location, "rb")))
 
     # Update statuses
-    video.status = "PROCESSED"
+    if video.status == "PENDING" or video.status == "INVALID":
+        video.status = "PROCESSED"
     video.save()
 
     # Cleanup

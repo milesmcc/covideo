@@ -3,7 +3,7 @@
 <a href="{% url 'videos:view' uuid=video.uuid %}" class="box"
     style="{% if video.thumbnail %} background: url('{{video.thumbnail.url}}') no-repeat center center; background-size: cover; {% endif %} padding: 0 !important; border-radius: 0.5rem; overflow: hidden;">
     <div
-        style="backdrop-filter: brightness(80%); padding: 1rem; min-height: 12rem; display: flex; align-items: flex-end;">
+        style="background-color: #00000030; padding: 1rem; min-height: 12rem; display: flex; align-items: flex-end;">
         <article style="width: 100%">
             {% if user %}
             <p class="is-size-6 is-marginless has-text-white">
