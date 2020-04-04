@@ -2,7 +2,8 @@ FROM python:3
 
 WORKDIR /usr/src/covideo
 
-RUN apt install ffmpeg
+RUN apt update
+RUN apt install ffmpeg -y
 
 RUN pip install pipenv
 COPY Pipfile.lock ./
