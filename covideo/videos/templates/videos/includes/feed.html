@@ -4,13 +4,13 @@
 
 {% for date in videos_by_date %}
 <section class="subsection">
-    <section class="subsection" style="margin-bottom: 8rem;">
+    <section class="subsection" style="margin: 4rem 0;">
         <div class="columns">
-            <div class="column is-2 has-text-right-desktop">
+            <div class="column has-text-right-desktop is-one-fifth">
                 <div class="is-sticky-desktop">
-                    <h1 class="title is-size-4 is-marginless is-smaller-mobile">
+                    <h1 class="title is-size-4 is-marginless">
                         {{date.grouper|date:"b j"|capfirst}}</h1>
-                    <h1 class="title is-size-4 is-smaller-mobile has-text-grey">{{date.grouper|date:"l"|capfirst}}
+                    <h1 class="title is-size-4 has-text-grey">{{date.grouper|date:"l"|capfirst}}
                     </h1>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                     </div>
                     {% empty %}
                 </div>
-                <h3 class="title is-size-4 has-text-weight-bold is-smaller-mobile has-text-grey">There are no videos for
+                <h3 class="title is-size-4 has-text-weight-bold has-text-grey">There are no videos for
                     this date.</h3>
                 {% endfor %}
             </div>
