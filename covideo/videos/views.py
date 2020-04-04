@@ -27,7 +27,7 @@ class SubmitView(LoginRequiredMixin, CreateView):
         return reverse("videos:personal")
 
 
-class VideoView(LoginRequiredMixin, DetailView):
+class VideoView(DetailView):
     model = Video
     template_name = "videos/views/video.html"
 

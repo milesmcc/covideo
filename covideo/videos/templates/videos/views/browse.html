@@ -3,9 +3,9 @@
 {% load bulma_tags humanize pagination %}
 
 {% block content %}
-<section class="subsection {% if expanded %}is-tall{% endif %}">
+<section class="subsection {% if expanded %}is-tall{% endif %}" style="margin-bottom: 5rem;">
     <div class="columns is-centered">
-        <div class="column is-narrow">
+        <div class="column is-12">
             {% if expanded %}
             <h1 class="title is-size-1 has-text-primary is-smaller-mobile">Sharing life under lockdown</h1>
             {% endif %}
@@ -29,11 +29,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="column is-narrow">
-                        <div class="control">
-                            <input class="input" type="date" name="day" value="{{request.GET.date}}">
-                        </div>
-                    </div> -->
                     <div class="column is-narrow">
                         <button class="button is-primary is-light" type="submit">Filter</button>
                     </div>
