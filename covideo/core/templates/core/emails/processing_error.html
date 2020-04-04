@@ -1,0 +1,14 @@
+{% extends 'core/email.html' %}
+
+{% block content %}
+<p>Hi {{user.display_name|default:"there"}},</p>
+
+<p>We saw that you tried submitting to Covideo, but unfortunately there was a problem processing your video.</p>
+
+<p>You may have accidentally submitted an image, pdf, or other file type that we don’t accept. If that’s the case, you can upload your video again and there shouldn’t be an issue. If not, send us an email and we will try to get this resolved ASAP.</p>
+
+<p>Thanks for being part of the Covideo community.</p>
+
+<p>All the best,<br>
+    Miles and Isabelle, the Covideo people</p>
+{% endblock %}

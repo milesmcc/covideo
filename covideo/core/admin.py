@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import gettext, gettext_lazy as _
 from .models import User, Prompt, Video
+from .tasks import process_video
 
 def send_welcome_email(modeladmin, request, queryset):
     for element in queryset:
@@ -46,10 +47,17 @@ class PromptAdmin(admin.ModelAdmin):
 
 admin.site.register(Prompt, PromptAdmin)
 
+def perform_video_processing(modeladmin, request, queryset):
+    for video in queryset:
+        process_video.delay(video.pk)
+
+perform_video_processing.short_description = "Compress & process video"
+
 class VideoAdmin(admin.ModelAdmin):
     list_display = ("created", "status", "title", "user", "prompt", "featured")
     search_fields = ('title',)
     list_filter = ('status', 'featured',)
     ordering = ("-created",)
+    actions = [perform_video_processing]
 
 admin.site.register(Video, VideoAdmin)

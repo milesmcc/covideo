@@ -102,5 +102,7 @@ class Video(models.Model):
     modified = models.DateTimeField(auto_now=True)
     prompt = models.ForeignKey(Prompt, on_delete=models.SET_NULL, null=True, blank=True)
     video = models.FileField(upload_to=video_upload_location, help_text="Try to keep your video concise&mdash;aim for two minutes or less.")
+    thumbnail = models.FileField(upload_to=video_upload_location, null=True, blank=True)
     duration = models.IntegerField(null=True, blank=True)
     featured = models.BooleanField(default=False)
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True)

@@ -1,0 +1,26 @@
+{% load humanize %}
+
+<a href="{% url 'videos:view' uuid=video.uuid %}" class="box"
+    style="{% if video.thumbnail %} background: url('{{video.thumbnail.url}}') no-repeat center center; background-size: cover; {% endif %} padding: 0 !important; border-radius: 0.5rem; overflow: hidden;">
+    <div
+        style="backdrop-filter: brightness(80%); padding: 1rem; min-height: 12rem; display: flex; align-items: flex-end;">
+        <article style="width: 100%">
+            {% if user %}
+            <p class="is-size-6 is-marginless has-text-white">
+                {{video.user.display_name}}
+            </p>
+            {% endif %}
+            <h4 class="title is-size-5 is-marginless has-text-white">{{video.title}}</h4>
+            {% if prompt or date %}
+            <p class="is-size-6 is-marginless has-text-white">
+                {% if date %}{{video.created|naturalday}}{% endif %}
+                {% if date and prompt and video.prompt %}/{% endif %}
+                {% if prompt %}{{video.prompt.text}}{% endif %}
+            </p>
+            {% endif %}
+            {% if video.status != "PUBLISHED" %}
+            <span class="tag is-info">Not yet public</span>
+            {% endif %}
+        </article>
+    </div>
+</a>

@@ -1,0 +1,21 @@
+{% extends 'core/content.html' %}
+
+{% load bulma_tags humanize %}
+
+{% block content %}
+<section class="subsection">
+    <div style="margin: 0 auto;">
+        {% include 'videos/includes/video.html' with video=object %}
+    </div>
+</section>
+<section class="subsection">
+    <h3 class="title">More videos</h3>
+    <div class="columns is-multiline">
+        {% for video in recommended %}
+        <div class="column is-6">
+            {% include 'videos/includes/video_preview.html' with user=True date=True prompt=True %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends 'core/email.html' %}
+
+{% block content %}
+<p>{{video.user.display_name}} ({{video.user.email}}) has uploaded a new video, and it has been successfully processed. <strong>It's now awaiting screening from you.</strong></p>
+
+<p>To view this video in the admin panel (and mark it as published and featured, if appropriate), <a href="{{base_url}}{% url 'admin:core_video_change' video.pk %}?{{ak}}">click here</a>.</p>
+{% endblock %}

@@ -3,8 +3,7 @@
 {% load bulma_tags humanize %}
 
 {% block content %}
-        <h3 class="title is-size-1 is-smaller-mobile has-text-primary">Your Videos</h3>
-        <p class="subtitle is-size-4 has-text-grey has-text-weight-medium">Videos will be made public when we
-            launch in a few days.</p>
+    <h3 class="title is-size-1 is-smaller-mobile has-text-primary">Your Videos</h3>
+    <br><br><br>
 {% include "videos/includes/feed.html" with videos=request.user.video_set.all %}
 {% endblock %}

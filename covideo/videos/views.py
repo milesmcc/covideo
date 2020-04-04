@@ -1,8 +1,10 @@
-from django.views.generic import CreateView, TemplateView, ListView
+from django.views.generic import CreateView, TemplateView, ListView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import reverse
+from django.shortcuts import reverse, get_object_or_404
 from django.contrib import messages
 from core.models import Video
+
+import random
 from . import forms
 
 
@@ -23,6 +25,24 @@ class SubmitView(LoginRequiredMixin, CreateView):
             "Thank you for your video! We will process and publish it shortly.",
         )
         return reverse("videos:personal")
+
+
+class VideoView(LoginRequiredMixin, DetailView):
+    model = Video
+    template_name = "videos/views/video.html"
+
+    def get_object(self):
+        return get_object_or_404(Video, uuid=self.kwargs["uuid"])
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data["title"] = self.get_object().title
+        data["recommended"] = (
+            Video.objects.filter(status="PUBLISHED")
+            .exclude(pk=self.get_object().pk)
+            .order_by("?")[:4]
+        )
+        return data
 
 
 class PersonalVideosView(LoginRequiredMixin, TemplateView):
@@ -51,6 +71,6 @@ class BrowseView(ListView):
         data["url_parameters"] = ""
         for i in ["day", "featured", "search", "user"]:
             if self.request.GET.get(i, "None") != "None":
-                data["url_parameters"] += f'&{i}={self.request.GET.get(i)}'
+                data["url_parameters"] += f"&{i}={self.request.GET.get(i)}"
         data["expanded"] = len(self.request.GET.keys()) == 0
         return data

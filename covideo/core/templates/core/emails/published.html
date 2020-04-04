@@ -1,0 +1,14 @@
+{% extends 'core/email.html' %}
+
+{% block content %}
+<p>Hi {{user.display_name|default:"there"}},</p>
+
+<p>Thanks for uploading to Covideo! We've processed and reviewed your video, and it's now live on our website.</p>
+
+<p>You can see it for yourself (and share it with friends) using this link: <a href="{{base_url}}{% url 'videos:view' uuid=video.uuid %}">{{base_url}}{% url 'videos:view' uuid=video.uuid %}</a></p>
+
+<p>Thanks for being part of the Covideo community. We're looking forward to seeing more videos from you!</p>
+
+<p>All the best,<br>
+    Miles and Isabelle, the Covideo people</p>
+{% endblock %}
