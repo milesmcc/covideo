@@ -3,19 +3,15 @@
 {% load bulma_tags humanize %}
 
 {% block content %}
-<section class="subsection">
-    <div style="margin: 0 auto;">
+<section class="columns">
+    <div class="column is-7">
         {% include 'videos/includes/video.html' with video=object %}
     </div>
-</section>
-<section class="subsection">
-    <h3 class="title">More videos</h3>
-    <div class="columns is-multiline">
+    <section class="column is-5">
+        <h3 class="title is-size-5">More videos</h3>
         {% for video in recommended %}
-        <div class="column is-6">
-            {% include 'videos/includes/video_preview.html' with user=True date=True prompt=True %}
-        </div>
+        {% include 'videos/includes/video_preview.html' with user=True date=True prompt=True %}
         {% endfor %}
-    </div>
+    </section>
 </section>
 {% endblock %}

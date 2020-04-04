@@ -49,7 +49,7 @@ def process_video(video_pk):
     expect_zero(subprocess.call(["wget", video.video.url, "-O", input_video_location]))
 
     # Compress video
-    expect_zero(subprocess.call(["ffmpeg", "-i", input_video_location, "-vcodec", "libx264", "-crf", "23", output_video_location]))
+    expect_zero(subprocess.call(["ffmpeg", "-i", input_video_location, "-vcodec", "libx264", "-crf", "28", output_video_location]))
 
     # Get thumbnail
     expect_zero(subprocess.call(["ffmpeg", "-i", output_video_location, "-ss", "00:00:01.000", "-vframes", "1", output_thumbnail_location]))

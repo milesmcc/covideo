@@ -3,19 +3,19 @@
 <a href="{% url 'videos:view' uuid=video.uuid %}" class="box"
     style="{% if video.thumbnail %} background: url('{{video.thumbnail.url}}') no-repeat center center; background-size: cover; {% endif %} padding: 0 !important; border-radius: 0.5rem; overflow: hidden;">
     <div
-        style="background-color: #00000030; padding: 1rem; min-height: 12rem; display: flex; align-items: flex-end;">
+        style="background-color: #00000040; padding: 1rem; min-height: 12rem; display: flex; align-items: flex-end;">
         <article style="width: 100%">
-            {% if user %}
+            {% if user or date %}
             <p class="is-size-6 is-marginless has-text-white">
-                {{video.user.display_name}}
+                {% if user %}{{video.user.display_name}}{% endif %}
+                {% if user and date %}/{% endif %}
+                {% if date %}{{video.created|naturalday}}{% endif %}
             </p>
             {% endif %}
             <h4 class="title is-size-5 is-marginless has-text-white">{{video.title}}</h4>
-            {% if prompt or date %}
+            {% if prompt %}
             <p class="is-size-6 is-marginless has-text-white">
-                {% if date %}{{video.created|naturalday}}{% endif %}
-                {% if date and prompt and video.prompt %}/{% endif %}
-                {% if prompt %}{{video.prompt.text}}{% endif %}
+                {{video.prompt.text}}
             </p>
             {% endif %}
             {% if video.status != "PUBLISHED" %}

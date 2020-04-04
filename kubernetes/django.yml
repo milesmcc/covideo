@@ -21,7 +21,7 @@ spec:
             secretName: google-app-credentials
       containers:
       - name: "covideo-webserver"
-        image: "gcr.io/covideo/covideo:2126232d6071a3f66c583e7381092201c3efb6b0"
+        image: "gcr.io/covideo/covideo:fec30ffd7a9adb661865481b7f7d3d16ecab652e"
         command: ["./webserver.sh"]
         volumeMounts:
           - name: google-app-credentials
@@ -53,7 +53,7 @@ spec:
             secretName: google-app-credentials
       containers:
       - name: "covideo-celeryworker"
-        image: "gcr.io/covideo/covideo:2126232d6071a3f66c583e7381092201c3efb6b0"
+        image: "gcr.io/covideo/covideo:fec30ffd7a9adb661865481b7f7d3d16ecab652e"
         command: ["./celeryworker.sh"]
         volumeMounts:
           - name: google-app-credentials

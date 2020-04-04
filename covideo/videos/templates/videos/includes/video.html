@@ -1,11 +1,20 @@
+{% load humanize %}
+
 <div class="video subsection">
-    <video controls preload="auto" style="border-radius: 6px;" width="500" {% if video.thumbnail %} poster="{{video.thumbnail.url}}" {% endif %}>
-        <source src="{{video.video.url}}">
-    </video>
-    <p class="has-text-primary is-size-5 title is-marginless">{{video.user.display_name}}</p>
+    <p class="has-text-grey is-size-6 is-marginless">{{video.user.display_name}} / {{video.created|naturalday}}</p>
     <h4 class="title is-size-4 is-marginless">{{video.title}}</h4>
+    <p class="title is-size-5 is-marginless has-text-primary">
+        {{video.prompt.text|default:"Freeform response"}}
+    </p>
     {% if video.status != "PUBLISHED" %}
     <span class="tag is-info">Not yet public</span>
     {% endif %}
+    {% if video.status == "INVALID" %}
+    <span class="tag is-danger">Unable to Process</span>
+    {% endif %}
+    <br>
+    <video controls preload="auto" style="border-radius: 6px;" {% if video.thumbnail %} poster="{{video.thumbnail.url}}" {% endif %}>
+        <source src="{{video.video.url}}">
+    </video>
     <br><br><br>
 </div>
