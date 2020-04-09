@@ -1,6 +1,6 @@
 {% load humanize daily_prompt %}
 
-{% regroup videos by created.date as videos_by_date %}
+{% regroup videos by date as videos_by_date %}
 
 {% for date in videos_by_date %}
 <section class="subsection">

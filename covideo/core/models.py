@@ -3,6 +3,7 @@ from django.core.signing import TimestampSigner
 from django.db import models
 from django.utils.crypto import get_random_string
 from django.utils.http import urlquote
+from django.utils.timezone import localtime
 from django.shortcuts import reverse
 from .tasks import send_email
 import uuid
@@ -106,3 +107,7 @@ class Video(models.Model):
     duration = models.IntegerField(null=True, blank=True)
     featured = models.BooleanField(default=False)
     uuid = models.UUIDField(default=uuid.uuid4, unique=True)
+
+    @property
+    def date(self):
+        return localtime(self.created).date()
