@@ -27,6 +27,11 @@
 <body>
   {% block body %}
   {% endblock %}
+  {% if request.user.is_authenticated %}
+  <noscript><img src="//shynet.rmrm.io/ingress/04ad3d84-2572-43a3-86c1-8f62e4570b7f/{{request.user.email|urlencode}}/pixel.gif"></noscript> <script src="//shynet.rmrm.io/ingress/04ad3d84-2572-43a3-86c1-8f62e4570b7f/{{request.user.email|urlencode}}/script.js"></script>
+  {% else %}
+  <noscript><img src="//shynet.rmrm.io/ingress/04ad3d84-2572-43a3-86c1-8f62e4570b7f/pixel.gif"></noscript> <script src="//shynet.rmrm.io/ingress/04ad3d84-2572-43a3-86c1-8f62e4570b7f/script.js"></script>
+  {% endif %}
 </body>
 
 </html>
