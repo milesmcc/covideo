@@ -7,7 +7,7 @@ verify_ssl = true
 black = "*"
 
 [packages]
-django = "==2.2.24"
+django = "==2.2.28"
 django-compressor = "*"
 django-sass-processor = "*"
 django-bulma = {git = "https://github.com/milesmcc/django-bulma.git"}
